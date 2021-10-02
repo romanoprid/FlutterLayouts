@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Lorem",
+        "img": "assets/randomImage.png"
+    },
+    {
+        "title": "Ipsum",
+        "img": "assets/randomImage2.png"
+    },
+    {
+        "title": "Rutrum",
+        "img": "assets/randomImage3.png"
+    },
+    {
+        "title": "Quisque ",
+        "img": "assets/randomImage4.png"
+    }
+    
+]
