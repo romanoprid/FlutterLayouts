@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:responsive/colors.dart' as color;
 
@@ -11,20 +9,6 @@ class HomePageLandscape extends StatefulWidget {
 }
 
 class _HomePageLandscapeState extends State<HomePageLandscape> {
-  List info = [];
-  void _initData() {
-    DefaultAssetBundle.of(context).loadString('json/info.json').then((value) {
-      info = json.decode(value);
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _initData();
-  }
-
-  @override
   Widget _landscapeMode() {
     return Scaffold(
       backgroundColor: color.AppColor.homePageBackground,
@@ -273,83 +257,130 @@ class _HomePageLandscapeState extends State<HomePageLandscape> {
                                 fontWeight: FontWeight.w500,
                                 color: color.AppColor.homePageTitle),
                           ),
-                          Expanded(
-                            child: ListView.builder(
-                                itemCount: info.length.toDouble() ~/ 2,
-                                itemBuilder: (_, i) {
-                                  int a = 2 * i;
-                                  int b = 2 * i + 1;
-                                  return Row(
-                                    children: [
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 20, bottom: 10),
-                                        width: 100,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            image: DecorationImage(
-                                                image:
-                                                    AssetImage(info[i]['img'])),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  blurRadius: 3,
-                                                  offset: const Offset(5, 5),
-                                                  color: color
-                                                      .AppColor.gradientSecond
-                                                      .withOpacity(0.1))
-                                            ]),
-                                        child: Center(
-                                          child: Align(
-                                            alignment: Alignment.bottomCenter,
-                                            child: Text(
-                                              info[a]['title'],
-                                              style: const TextStyle(
-                                                  fontSize: 20,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 5.0),
+                            height: 160.0,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/randomImage.png')),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 3,
+                                            offset: const Offset(5, 5),
+                                            color: color.AppColor.gradientSecond
+                                                .withOpacity(0.1))
+                                      ]),
+                                  child: const Center(
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Text(
+                                        'Lorem',
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.white),
                                       ),
-                                      Container(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 5),
-                                        width: 100,
-                                        height: 100,
-                                        margin: const EdgeInsets.only(
-                                            left: 30, bottom: 10),
-                                        decoration: BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            image: DecorationImage(
-                                                image:
-                                                    AssetImage(info[b]['img'])),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  blurRadius: 3,
-                                                  offset: const Offset(5, 5),
-                                                  color: color
-                                                      .AppColor.gradientSecond
-                                                      .withOpacity(0.1))
-                                            ]),
-                                        child: Center(
-                                          child: Align(
-                                            alignment: Alignment.bottomCenter,
-                                            child: Text(
-                                              info[b]['title'],
-                                              style: const TextStyle(
-                                                  fontSize: 20,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/randomImage2.png')),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 3,
+                                            offset: const Offset(5, 5),
+                                            color: color.AppColor.gradientSecond
+                                                .withOpacity(0.1))
+                                      ]),
+                                  child: const Center(
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Text(
+                                        'Ipsum',
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.white),
                                       ),
-                                    ],
-                                  );
-                                }),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width: 160.0,
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/randomImage3.png')),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 3,
+                                            offset: const Offset(5, 5),
+                                            color: color.AppColor.gradientSecond
+                                                .withOpacity(0.1))
+                                      ]),
+                                  child: const Center(
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Text(
+                                        'Rutrum',
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width: 160.0,
+                                  child: const Center(
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Text(
+                                        'Quisque',
+                                        style: TextStyle(
+                                            fontSize: 20, color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/randomImage4.png')),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 3,
+                                            offset: const Offset(5, 5),
+                                            color: color.AppColor.gradientSecond
+                                                .withOpacity(0.1))
+                                      ]),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

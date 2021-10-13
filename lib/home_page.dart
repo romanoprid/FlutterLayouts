@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:responsive/colors.dart' as color;
 import 'package:responsive/landscape.dart';
@@ -12,25 +10,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List info = [];
-  void _initData() {
-    DefaultAssetBundle.of(context).loadString('json/info.json').then((value) {
-      info = json.decode(value);
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _initData();
-  }
-
-  @override
   Widget _portraitMode() {
     return Scaffold(
       backgroundColor: color.AppColor.homePageBackground,
       body: Container(
-        padding: const EdgeInsets.only(top: 70, left: 30, right: 30),
+        padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
         child: Column(
           children: [
             Row(
@@ -60,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                     size: 20, color: color.AppColor.homePageIcons),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
             Row(
               children: [
                 Text(
@@ -86,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               width: MediaQuery.of(context).size.width,
@@ -185,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.only(top: 30),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 120,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -215,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold,
                               color: color.AppColor.homePageDetail),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 5),
                         RichText(
                           text: TextSpan(
                               style: TextStyle(
@@ -246,76 +230,121 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Expanded(
-              child: OverflowBox(
-                maxWidth: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                  itemCount: info.length.toDouble() ~/ 2,
-                  itemBuilder: (_, i) {
-                    int a = 2 * i;
-                    int b = 2 * i + 1;
-                    return Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(bottom: 5),
-                          width: 170,
-                          height: 160,
-                          margin: const EdgeInsets.only(left: 20, bottom: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.blueAccent,
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: AssetImage(info[i]['img'])),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 3,
-                                    offset: const Offset(5, 5),
-                                    color: color.AppColor.gradientSecond
-                                        .withOpacity(0.1))
-                              ]),
-                          child: Center(
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(
-                                info[a]['title'],
-                                style: const TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                            ),
-                          ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 5.0),
+              height: 160.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  Container(
+                    width: 160.0,
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/randomImage.png')),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(5, 5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1))
+                        ]),
+                    child: const Center(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          'Lorem',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        Container(
-                          padding: const EdgeInsets.only(bottom: 5),
-                          width: 170,
-                          height: 160,
-                          margin: const EdgeInsets.only(left: 10, bottom: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.blueAccent,
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: AssetImage(info[b]['img'])),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 3,
-                                    offset: const Offset(5, 5),
-                                    color: color.AppColor.gradientSecond
-                                        .withOpacity(0.1))
-                              ]),
-                          child: Center(
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(
-                                info[b]['title'],
-                                style: const TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                            ),
-                          ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    width: 160.0,
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/randomImage2.png')),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(5, 5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1))
+                        ]),
+                    child: const Center(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          'Ipsum',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                      ],
-                    );
-                  },
-                ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    width: 160.0,
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/randomImage3.png')),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(5, 5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1))
+                        ]),
+                    child: const Center(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          'Rutrum',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    width: 160.0,
+                    child: const Center(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          'Quisque',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                            image: AssetImage('assets/randomImage4.png')),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(5, 5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1))
+                        ]),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                ],
               ),
             ),
           ],
